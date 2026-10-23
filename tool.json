@@ -1,0 +1,13 @@
+{
+  "id": "c20",
+  "slug": "title-ab-generator",
+  "name": "爆款标题 A/B 生成",
+  "version": "0.1.0",
+  "repo": "campfire-code/title-ab-generator",
+  "license": "MIT",
+  "ui": {
+    "layout": "f",
+    "palette": "rose"
+  },
+  "upstream": null
+}

@@ -1,0 +1,55 @@
+/* 爆款标题 A/B 生成：只用 kit.css 的变量，类名以 ta- 开头 */
+.ta { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
+.ta.ta-hover { outline: 2px dashed var(--primary); outline-offset: 4px; border-radius: var(--radius); }
+.ta-tabs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ta-dir { max-width: min(300px, 100%); }
+.ta-dir span { max-width: 240px; }
+.ta-body { display: grid; grid-template-columns: minmax(250px, 310px) minmax(0, 1fr); gap: 14px; align-items: start; min-height: 0; }
+.ta-form { padding: 14px; display: flex; flex-direction: column; gap: 12px; position: sticky; top: 0; }
+.ta-label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ta-label-row .k-link { display: inline-flex; align-items: center; gap: 4px; font-size: .88em; }
+.ta-topics { min-height: 96px; height: 120px; resize: vertical; }
+.ta-group { min-height: 120px; height: 150px; resize: vertical; font-size: .93em; }
+.ta-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ta-sm { padding: 2px 10px; font-size: .86em; max-width: 220px; }
+.ta-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ta-ab-inputs { display: grid; gap: 10px; }
+.ta-result { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.ta-result-hd { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.ta-tag { padding: 0 8px; border-radius: 999px; background: var(--warn-soft); color: var(--warn); font-size: .8em; font-weight: 600; }
+.ta-table-wrap { border: 1px solid var(--line); border-radius: min(var(--radius), 10px); background: var(--surface); }
+.ta-table td { vertical-align: top; }
+.ta-table td.ta-title, .ta-table td.ta-reason { white-space: normal; }
+.ta-title { min-width: 180px; }
+.ta-title span { display: block; font-weight: 600; line-height: 1.5; }
+.ta-title small { display: flex; align-items: center; gap: 6px; margin-top: 3px; font-size: .8em; }
+.ta-title small i { font-style: normal; }
+.ta-scores { display: grid; grid-template-columns: auto auto; gap: 2px 8px; align-items: center; font-size: .82em; }
+.ta-scores > span { color: var(--muted); }
+.ta-over { color: var(--err); font-weight: 600; }
+.ta-reason { min-width: 160px; font-size: .9em; line-height: 1.55; color: var(--muted); }
+.ta-risknote { display: block; color: var(--warn); margin-top: 2px; }
+.ta-pf { display: inline-block; font-style: normal; padding: 0 7px; border-radius: 999px; background: var(--chip); font-size: .85em; }
+.ta-missing td { opacity: .65; }
+.ta-total { font-size: 1.08em; color: var(--primary); }
+.ta-bar { --c: var(--primary); display: inline-flex; align-items: center; gap: 6px; }
+.ta-bar i { display: block; width: 40px; height: 6px; border-radius: 3px; background: var(--chip); overflow: hidden; }
+.ta-bar s { display: block; height: 100%; border-radius: 3px; background: var(--c); }
+.ta-bar b { font-weight: 600; min-width: 1.2em; }
+.ta-bar.risk { --c: var(--ok); }
+.ta-bar.risk.mid { --c: var(--warn); }
+.ta-bar.risk.hi { --c: var(--err); }
+.ta-bar.risk b { color: var(--c); }
+.ta-sub { font-size: .92em; }
+.ta-group-list { display: grid; gap: 6px; }
+.ta-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ta-vs-card { padding: 12px 14px; display: grid; gap: 8px; }
+.ta-vs-card.win { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary) inset; }
+.ta-vs-hd { display: flex; align-items: center; gap: 8px; }
+.ta-big { font-size: 1.7em; line-height: 1; color: var(--primary); }
+.ta-win { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); font-size: .82em; font-weight: 600; }
+.ta-vs-rows { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; align-items: center; font-size: .9em; }
+.ta-small { font-size: .85em; }
+.ta-verdict { padding: 12px 14px; display: grid; gap: 6px; }
+.ta-verdict p { margin: 0; line-height: 1.65; }
+@media (max-width: 820px) { .ta-body { grid-template-columns: 1fr; } .ta-form { position: static; } }
