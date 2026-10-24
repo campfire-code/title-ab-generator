@@ -125,10 +125,15 @@ export function buildScoreMessages(items: ScoreItem[], platform: Platform, topic
     `平台：${platform.name}（风格：${platform.style}）`,
     topic.trim() ? `内容主题：${topic.trim()}` : null,
     '给下面每个标题打三项分（0～10 的整数）：',
+    // check-zh: 忽略（写给大模型的提示词，JSON 字段名必须与解析代码一致）
     '- attract 吸引力：在该平台信息流里让人想点开的程度；',
+    // check-zh: 忽略（写给大模型的提示词，JSON 字段名必须与解析代码一致）
     '- clarity 清晰度：一眼看懂讲什么、对谁有用；',
+    // check-zh: 忽略（写给大模型的提示词，JSON 字段名必须与解析代码一致）
     '- risk 合规风险：越高越危险。绝对化用语（最、第一、100% 等）、夸大功效、编造数据或权威背书、低俗擦边、诱导点击（标题党）、医疗或投资承诺都要扣分。没有问题给 0～2。',
+    // check-zh: 忽略（写给大模型的提示词，JSON 字段名必须与解析代码一致）
     'reason 用一句话说明优缺点；riskNote 写具体风险点，没有风险写空字符串。',
+    // check-zh: 忽略（写给大模型的提示词，JSON 字段名必须与解析代码一致）
     compare ? '标题分 A、B 两组，打分标准对两组完全一致。打完分后在 summary 里用 2～3 句话比较两组整体的差别、哪组更适合该平台以及原因。' : null,
     '',
     ...items.map((x) => `[${x.id}]${x.group ? `（${x.group} 组）` : ''} ${x.title}`),

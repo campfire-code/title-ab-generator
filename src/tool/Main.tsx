@@ -27,39 +27,43 @@ function Bar({ v, kind }: { v: number; kind?: 'risk' }) {
 }
 
 function ScoreTable({ list, limitOf, showPlatform }: { list: Scored[]; limitOf: (p: string) => number; showPlatform?: boolean }) {
+  // 每个「选题 × 平台」里综合分最高的一条标「最佳」
+  const best = new Map<string, Scored>();
+  if (showPlatform) for (const x of list) { if (x.missing) continue; const k = `${x.topic}|${x.platform}`; const o = best.get(k); if (!o || x.total > o.total) best.set(k, x); }
   return (
-    <div className="k-table-wrap ta-table-wrap">
-      <table className="k-table ta-table">
-        <thead>
-          <tr>
-            <th>标题</th><th>三项评分</th><th>综合</th><th>理由</th><th aria-label="复制" />
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((x, i) => {
-            const len = titleLength(x.title);
-            const lim = limitOf(x.platform);
-            return (
-              <tr key={i} className={x.missing ? 'ta-missing' : ''}>
-                <td className="ta-title">
-                  <span>{x.title}</span>
-                  <small>{showPlatform && <em className="ta-pf">{platformOf(x.platform).name}</em>}<i className={`k-num ${lim && len > lim ? 'ta-over' : 'k-muted'}`}>{len} 字{lim && len > lim ? `，超过 ${lim} 字` : ''}</i></small>
-                </td>
-                {x.missing ? <td colSpan={2} className="k-muted">—</td> : <>
-                  <td><div className="ta-scores"><span>吸引力</span><Bar v={x.attract} /><span>清晰度</span><Bar v={x.clarity} /><span>风险</span><Bar v={x.risk} kind="risk" /></div></td>
-                  <td><b className="ta-total k-num">{x.total.toFixed(1)}</b></td>
-                </>}
-                <td className="ta-reason">
-                  {x.reason}
-                  {x.riskNote && <span className="ta-risknote">风险：{x.riskNote}</span>}
-                </td>
-                <td><CopyButton text={x.title} /></td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <ol className="ta-cards">
+      {list.map((x, i) => {
+        const len = titleLength(x.title);
+        const lim = limitOf(x.platform);
+        const top = best.get(`${x.topic}|${x.platform}`) === x;
+        return (
+          <li key={i} className={`ta-card${x.missing ? ' ta-missing' : ''}${top ? ' top' : ''}`}>
+            <div className="ta-score" aria-label={x.missing ? '没有分数' : `综合分 ${x.total.toFixed(1)}`}>
+              <b className="ta-total k-num">{x.missing ? '—' : x.total.toFixed(1)}</b>
+              <span>综合分</span>
+            </div>
+            <div className="ta-main">
+              <div className="ta-title">
+                <span>{x.title}</span>
+                {top && <em className="ta-best"><Trophy size={13} />最佳</em>}
+              </div>
+              <div className="ta-meta">
+              <div className="ta-tags">
+                {showPlatform && <em className="ta-pf">{platformOf(x.platform).name}</em>}
+                <i className={`k-num ${lim && len > lim ? 'ta-over' : 'k-muted'}`}>{len} 字{lim && len > lim ? `，超过 ${lim} 字` : ''}</i>
+              </div>
+              {!x.missing && <div className="ta-scores"><span>吸引力</span><Bar v={x.attract} /><span>清晰度</span><Bar v={x.clarity} /><span>风险</span><Bar v={x.risk} kind="risk" /></div>}
+              </div>
+              <p className="ta-reason">
+                {x.reason}
+                {x.riskNote && <span className="ta-risknote">风险：{x.riskNote}</span>}
+              </p>
+            </div>
+            <CopyButton text={x.title} />
+          </li>
+        );
+      })}
+    </ol>
   );
 }
 

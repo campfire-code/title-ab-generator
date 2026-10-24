@@ -131,6 +131,7 @@ export async function exportGenerate(io: Io, dir: string, now: Date, list: Score
 
 export async function exportCompare(io: Io, dir: string, now: Date, r: CompareResult, userLimit: number): Promise<string> {
   if (!dir) throw new Error('还没有选择保存位置');
+  // check-zh: 忽略（导出文件名，不改）
   const path = await io.join(dir, `${safeName(`标题AB对比-${stamp(now)}`)}.xlsx`);
   await io.writeFile(path, await writeXlsx(compareSheets(r, limitFn(userLimit)), '篝火 · 爆款标题 A/B 生成'));
   return path;

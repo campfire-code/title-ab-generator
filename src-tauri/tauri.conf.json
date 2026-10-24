@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "爆款标题 A B 生成",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "identifier": "com.campfirecode.titleabgenerator",
   "build": {
     "beforeDevCommand": "pnpm dev",
